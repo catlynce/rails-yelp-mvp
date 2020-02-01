@@ -1,0 +1,7 @@
+<div class="col-12">
+    <h1>Restaurants</h1>
+</div>
+
+<% @restaurants.each do |restaurant| %>
+    <%= render partial: 'card', locals: {r: restaurant} %>
+<% end %>

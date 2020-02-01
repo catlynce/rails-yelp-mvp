@@ -1,0 +1,11 @@
+<div class="col-sm-12">
+    <h1><%= @restaurant.name %></h1>
+    <address>
+        <%= @restaurant.address %>
+    </address>
+</div>
+
+<div>
+    <%= link_to "Edit", edit_restaurant_path(@restaurant) %>
+    <%= link_to "Delete", restaurant_path(@restaurant), method: :delete %>
+</div>
