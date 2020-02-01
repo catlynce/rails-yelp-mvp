@@ -1,11 +1,39 @@
 <div class="col-sm-12">
     <h1><%= @restaurant.name %></h1>
-    <address>
-        <%= @restaurant.address %>
-    </address>
+    <p>
+        <label>Address:</label>
+        <address>
+            <%= @restaurant.address %>
+        </address>
+    </p>
+    <p>
+        <label>Phone Number:</label>
+        <%= @restaurant.phone_number %>
+    </p>
+    <p>
+        <label>Category: </label>
+        <%= @restaurant.category %>
+    </p>
 </div>
 
-<div>
-    <%= link_to "Edit", edit_restaurant_path(@restaurant) %>
-    <%= link_to "Delete", restaurant_path(@restaurant), method: :delete %>
+<div class="col-sm-12 mt-2">
+    <%= link_to "Edit", edit_restaurant_path(@restaurant), class: 'btn btn-secondary' %>
+    <%= link_to "Delete", restaurant_path(@restaurant), method: :delete, class: 'btn btn-danger' %>
+</div>
+
+<div class="col-sm-12 mt-4">
+    <p class="h4">Reviews</p>
+    <ul class="list-group flex-fill">
+        <% @restaurant.reviews.each do |review| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <%= review.content %>
+                <span class="badge badge-primary badge-pill">
+                    <%= review.rating %>
+                </span>
+            </li>
+        <% end %>
+    </ul>
+    <div class="mt-2">
+        <%= link_to "Add review", new_restaurant_review_path(@restaurant), class: 'btn btn-outline-primary' %>
+    </div>
 </div>
